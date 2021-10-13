@@ -14,7 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import za.ac.cput.Adp_properties_server.dbconnection.DBConnection;
-import za.ac.cput.Adp_properties_server.login.Login;
+import za.ac.cput.Adp_properties_server.classes.User;
 
 /**
  *
@@ -32,7 +32,7 @@ public class ServerDAO {
     //Create
     public ServerDAO save(ServerDAO Login) throws SQLException{
      
-    Login login = new Login("","");   
+    User login = new User("","");   
     String insertSQL = "INSERT INTO Login (username, password)"
             + "VALUES (?, ?)";
     
@@ -55,20 +55,20 @@ public class ServerDAO {
     }
     
     //Read
-    public List<Users> getAll() throws SQLException{
+    public List<User> getAll() throws SQLException{
         
 //        ResultSet rs = this.statement.executeQuery(getAll_SQL);
 //        PreparedStatement ps = this.con.prepareStatement(getAll_SQL);
 //        ResultSet rs = ps.executeQuery();
 
-        String getAll_SQL = "SELECT * From users";      
-        List<Users> User = new ArrayList<>();
+        String getAll_SQL = "SELECT * From Users";      
+        List<User> User = new ArrayList<>();
         try (PreparedStatement ps = this.con.prepareStatement(getAll_SQL);ResultSet rs = ps.executeQuery())
         {
         while (rs.next()){
           String username = rs.getString("username");
           String password = rs.getString("password");
-          Login milo = new Login(username, password);
+          User milo = new User(username, password);
           User.add(milo);
         }
         rs.close();

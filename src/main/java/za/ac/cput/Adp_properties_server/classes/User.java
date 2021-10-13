@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package za.ac.cput.Adp_properties_server.login;
+package za.ac.cput.Adp_properties_server.classes;
 
 /**
  *
  * @author emile
  */
-public class Login {
+public class User {
         private String username;
         private String password;
 
-    public Login() {
+    public User() {
     }
         
-    public Login(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
